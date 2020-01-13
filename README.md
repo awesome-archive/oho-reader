@@ -10,7 +10,7 @@ Github项目地址:[https://github.com/ShanaMaid/oho-reader](https://github.com/
 推荐一个之前用Vue全家桶写的 [网易云音乐PC端 web版本](https://github.com/ShanaMaid/vue-163-music)
 
 ## 在线版
-[http://www.shanamaid.top:3001/](http://www.shanamaid.top:3001/)
+[http://119.29.159.156:3001/](http://119.29.159.156:3001/)
 
 ## 部分效果截图
 ![3](screenshot/3.gif)
@@ -58,23 +58,32 @@ npm run serve
 npm run dist
 
 # 实际环境
-cd server
+cd dist
 node app.js
 访问 http://localhost:3001/
 ```
+
+Docker:
+方便在Docker下部署
+[Docker-file](https://hub.docker.com/r/esme518/docker-oho-reader/)
+
+感谢[@esme518](https://github.com/esme518)提供
 
 ## 实现功能
 - [x] 小说搜索
 - [x] 小说详情
 - [x] 小说换源
 - [x] 小说阅读
+- [x] 小说分享
 - [x] 阅读字体大小变化
 - [x] 阅读背景色变化
 - [x] 阅读设置本地缓存
 - [x] 阅读进度本地缓存
 - [x] 搜索历史本地缓存
+- [x] 小说章节缓存(100章)-智能删除已阅读章节
 
-下拉首页小说列表可以刷新小说章节列表信息缓存！
+
+每次进入首页自动刷新最新章节列表
 
 ## 目录结构
 ```
@@ -156,4 +165,7 @@ BUG提交请发送邮箱: uestczeng@gmail.com
 [你可以在这里打赏我](http://blog.shanamaid.top/sponsor/)
 
 你的支持将有助于项目维护以及提高用户体验，感谢各位的支持！
+
+## 特别鸣谢
+感谢[@hieixu](https://github.com/hieixu)对本项目的长期跟进，提出了许多`issue`改进用户体验以及打赏支持
 

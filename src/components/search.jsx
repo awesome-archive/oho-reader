@@ -22,7 +22,6 @@ class Search extends React.Component{
     this.flag = this.state.searchValue.length ? false : true; 
 
     this.tagColorArr = this.state.searchHistory.map(item => randomcolor({luminosity: 'dark'}));
-    console.log(this.tagColorArr)
     this.clearHistory = () => {
       let searchHistory = [];
       this.setState({searchHistory});
@@ -38,8 +37,12 @@ class Search extends React.Component{
       };
       //更新搜索历史
       let searchHistory = new Set(this.state.searchHistory);
-      searchHistory = Array.from(searchHistory.add(value));
-      storejs.set('searchHistory', searchHistory);
+      if (!searchHistory.has(value)) {
+        searchHistory = this.state.searchHistory;
+        searchHistory.unshift(value);
+        storejs.set('searchHistory', searchHistory);
+      }
+      
 
       this.tagColorArr.push(randomcolor({luminosity: 'dark'}));
       

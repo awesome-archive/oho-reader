@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import BookItem from './bookItem'
 import styles from '../styles/main.less'
 import template from './template'
-import ReactPullToRefresh from 'react-pull-to-refresh'
-import 'whatwg-fetch';
+import 'whatwg-fetch'
 
 let menuPng = require('../images/menu.png');
 
@@ -18,6 +17,7 @@ class AppComponent extends React.Component {
       bookList: this.props.bookList.list,
       refresh: false
     }
+    console.log(this.props.bookList.list)
     this.menu = (
       <Menu>
         <Menu.Item key="0">
@@ -29,15 +29,10 @@ class AppComponent extends React.Component {
       </Menu>
     )
 
-    this.handleRefresh = (resolve) => {
-      resolve();
-      this.setState({refresh: true});
-      this.props.refreshBook();
-    }
-
   }
  
   componentWillMount() {
+    this.props.refreshBook();
   }
 
   componentWillReceiveProps(nextProps){
@@ -62,10 +57,6 @@ class AppComponent extends React.Component {
           </Header>
           
           <Content className={styles.content}>
-          { this.state.refresh ? (<Spin/>) : ''}
-          <ReactPullToRefresh
-            onRefresh={this.handleRefresh}
-          >
             {
               this.state.bookList.length === 0 ?
               (
@@ -75,7 +66,6 @@ class AppComponent extends React.Component {
               )
               : this.state.bookList.map((item, index) => <Link to={`/read/${index}`} key={index}><BookItem data={item} deleteBook={this.props.deleteBook} key={index} /></Link>)
             }
-          </ReactPullToRefresh>
           </Content>
         </Layout>
       </div>
